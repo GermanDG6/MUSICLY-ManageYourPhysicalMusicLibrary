@@ -14,35 +14,32 @@ router.get('/all-albums',(req,res)=>{
   .then((result) => {
       const layout = req.user? '/layout/auth' : '/layout/noAuth'
       res.render('all-albums',{album: result.data.results, layout:layout})
-    }).catch((err) => {
-      console.log(err)
-    });
-})
-
-router.get('/album-details/:id',(req,res)=>{
-  const id = req.params.id
-  axios.get(`https://api.discogs.com/releases/${id}?key=${process.env.CONSUMERKEY}&secret=${process.env.CONSUMERSECRET}`)
-  .then((result) => {
-    console.log(result.data.images[0].uri)
-    const layout = req.user? '/layout/auth' : '/layout/noAuth'
-    res.render('album-details',{ album: result.data, layout:layout})
-  }).catch((err) => {
+  })
+  .catch((err) => {
     console.log(err)
   });
 })
 
+router.get('/album-details/:id',(req,res)=>{
+  const id = req.params.id
+  axios.get(`https://api.discogs.com/masters/${id}?key=${process.env.CONSUMERKEY}&secret=${process.env.CONSUMERSECRET}`)
+  .then((result) => {
+    console.log(result.data)
+    const layout = req.user? '/layout/auth' : '/layout/noAuth'
+    res.render('album-details',{ album: result.data, layout:layout})
+  })
+  .catch((err) => {
+    axios.get(`https://api.discogs.com/releases/${id}?key=${process.env.CONSUMERKEY}&secret=${process.env.CONSUMERSECRET}`)
+    .then((result) => {
+      console.log(result.data)
+      const layout = req.user? '/layout/auth' : '/layout/noAuth'
+      res.render('album-details',{ album: result.data, layout:layout})
+    })
+    .catch((err)=>{
+       console.log(err)
+    })
+  })
+})
 
-
-
-// router.get('/album-details', (req,res,next)=>{
-//      axios.get(`https://api.discogs.com/database/search?title=${req.query.title}&key=${process.env.CONSUMERKEY}&secret=${process.env.CONSUMERSECRET}`)
-//      .then((result) => {
-//        console.log(result)
-//       const layout = req.user? '/layout/auth' : '/layout/noAuth'
-//       res.render('album-details',{ album: result.results, layout:layout})
-//     }).catch((err) => {
-//       console.log(err)
-//     });
-// })
 
 module.exports = router;
