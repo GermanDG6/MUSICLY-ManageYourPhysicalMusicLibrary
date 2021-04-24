@@ -1,0 +1,8 @@
+Clave del cliente	yxQzBtXqgYTfaoBabDUT
+Información secreta del cliente	HENUhMHzFyuOcWVCBIRmiFOIxelajHZZ
+Petición de Autenficador de URL	https://api.discogs.com/oauth/request_token
+Autorizar URL	https://www.discogs.com/es/oauth/authorize
+Acceso al Símbolo URL	https://api.discogs.com/oauth/access_token
+
+
+https://api.discogs.com/database/search?type=artist&year=2018&key=yxQzBtXqgYTfaoBabDUT&secret=HENUhMHzFyuOcWVCBIRmiFOIxelajHZZ
