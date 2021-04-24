@@ -19,7 +19,17 @@ router.get('/all-albums',(req,res)=>{
     });
 })
 
-
+router.get('/album-details/:id',(req,res)=>{
+  const id = req.params.id
+  axios.get(`https://api.discogs.com/releases/${id}?key=${process.env.CONSUMERKEY}&secret=${process.env.CONSUMERSECRET}`)
+  .then((result) => {
+    console.log(result.data.images[0].uri)
+    const layout = req.user? '/layout/auth' : '/layout/noAuth'
+    res.render('album-details',{ album: result.data, layout:layout})
+  }).catch((err) => {
+    console.log(err)
+  });
+})
 
 
 
