@@ -1,4 +1,5 @@
 const express = require('express');
+const Album = require('../models/Album.model');
 const router = express.Router();
 
 
@@ -15,18 +16,72 @@ const checkForAuth = (req,res,next) => {
 
 
 
+router.get('/my-list', checkForAuth ,(req, res) => {
+  const layout = req.user ? '/layout/auth' : '/layout/noAuth'
+  User.findById(req.user._id)
+  .populate('myList')
+  //.populate('artists')
+  .then((result) => {
+      res.render('profile/myList', {user: result , layout: layout})
+  }).catch((err) => {
+    console.log(err)
+  });
+})
 
-router.get('/', checkForAuth,(req,res,next)=>{
-  const layout = req.user? '/layout/auth' : '/layout/noAuth'
-  //console.log(req.user)
-  res.render('profile/profile', {dataUser: req.user, layout:layout})
+router.post('/my-list/:_id', checkForAuth,(req,res,next)=>{
+  User.findById(req.user._id)
+  .then((result) => {
+    if(!result.myList.includes(req.params._id)){
+      User.findByIdAndUpdate(req.user._id, {$push: {myList: req.params._id}})
+        .then((result) => {
+          res.redirect('/profile/my-list')
+        })
+    }else{
+      res.redirect('/profile/my-list')
+    }
+  })
+  .catch((err) => {
+    console.log(err)
+  });
 });
 
-router.post('/wish-list', checkForAuth, (req,res,next)=>{
-  User.findByIdAndUpdate(req.user , {$push: {wishList: req.body}})
+router.post('/my-list/:_id/delete', checkForAuth,(req,res)=>{
+  Album.findByIdAndDelete(req.params._id)
   .then((result) => {
-    res.redirect('/profile')
+      res.redirect('/profile/my-list')
+    }).catch((err) => {
+      console.log(err)
+    });
+})
+
+
+
+
+
+router.get('/wish-list', checkForAuth ,(req, res) => {
+  const layout = req.user ? '/layout/auth' : '/layout/noAuth'
+  User.findById(req.user._id)
+  .populate('wishList')
+  .then((result) => {
+    res.render('profile/wishList', {user: result , layout: layout})
   }).catch((err) => {
+    console.log(err)
+  });
+})
+
+router.post('/wish-list/:_id', checkForAuth, (req,res,next)=>{
+  User.findById(req.user._id)
+  .then((result) => {
+    if(!result.wishList.includes(req.params._id) && !result.myList.includes(req.params._id)){
+      User.findByIdAndUpdate(req.user._id , {$push: {wishList: req.params._id}})
+      .then((result) => {
+        res.redirect('/profile/wish-list')
+      })
+    }else{
+      res.redirect('/profile/wish-list')
+    }
+  })
+  .catch((err) => {
     console.log(err)
   });
 })

@@ -1,8 +1,24 @@
-<h2>Search by ...</h2>
+<h2>Welcome to MusicLibrary</h2>
+
+<h3>Search by ...</h3>
 
 
-<form action="/artist/all-albums" method="get">
+<form action="/album/all-albums" method="get">
  <label for="artist" >Search by artist: </label>
- <input type="text" name="artist" value="daft-punk">
- <button type="submit">Search</button>
+ <input type="text" name="artist">
+ <button type="submit" class="btn btn-outline-secondary">Search</button>
 </form>
+{{#if errorMessage}}
+<p>{{this.errorMessage}}</p>
+{{/if}}
+
+{{#each album}}
+<ul>
+<a href="/album/album-details/{{id}}">
+   <li>
+      {{this.title}}
+      <img src="{{this.cover_image}}" alt="{{this.title}}">
+    </li>
+  </a> 
+</ul>
+{{/each}}

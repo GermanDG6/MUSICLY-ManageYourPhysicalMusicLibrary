@@ -23,7 +23,8 @@ const User = require('./models/User.model')
 mongoose
   .connect('mongodb://localhost/backend-proyect2-rmt-ft-march21-germandg', {
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
   })
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -122,7 +123,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 //-----ROUTES
 app.use('/', require('./routes/index.routes'));
 app.use('/', require('./routes/auth.routes'));
-app.use('/artist', require('./routes/artist.routes'));
+app.use('/album', require('./routes/album.routes'));
 app.use('/profile', require('./routes/profile.routes'));
 
 module.exports = app;

@@ -1,0 +1,16 @@
+<h2>My Wish List</h2>
+
+<ul>
+{{#each user.wishList}}
+<a href="/album/album-details/{{id}}">
+  <li>
+   <img src={{this.images.0.uri}} alt="{{this.title}}"> 
+    {{this.title}}
+    {{this.year}}
+    {{#each this.artists}}
+    {{this.name}}
+    {{/each}}
+  </li>
+</a>
+{{/each}}
+</ul>

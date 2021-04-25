@@ -44,7 +44,7 @@ router.get("/login",(req,res)=>{
     res.render('auth/login', {errorMessage: req.flash('error'), layout: layout})
 })
 router.post('/login', passport.authenticate('local',{
-  successRedirect: '/artist/search',
+  successRedirect: '/album/search',
   failureRedirect: '/login',
   failureFlash: true,
   passReqToCallback: true

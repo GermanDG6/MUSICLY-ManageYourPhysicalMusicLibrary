@@ -1,23 +1,51 @@
 <h2>Album details</h2>
 
-<img src="{{album.images.0.uri}}" alt="{{album.title}}">
-<p>Title: {{album.title}}</p>
-<p>Year : {{album.year}}</p>
+
+            <form action="/profile/my-list/{{albums._id}}" method="POST">
+                <div style="display: none;">
+                    <input type="text" name="_id" value="{{albums._id}}">
+                    {{!-- <input type="text" name="title" value="{{albums.title}}">
+                    <input type="text" name="year" value="{{albums.year}}">
+                    <input type="text" name="formats" value="{{albums.formats}}">
+                    <input type="text" name="artists" value="{{albums.artists}}">
+                    <input type="text" name="trackList" value="{{albums.tracklist}}">
+                    <input type="text" name="image_url" value="{{albums.images}}"> --}}
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Add to My list</button>
+            </form>
+            <form action="/profile/wish-list/{{albums._id}}" method="POST">
+                <div style="display: none;">
+                    <input type="text" name="_id" value="{{albums._id}}">
+                    {{!-- <input type="text" name="title" value="{{albums.title}}">
+                    <input type="text" name="year" value="{{albums.year}}">
+                    <input type="text" name="formats" value="{{albums.formats}}">
+                    <input type="text" name="artists" value="{{albums.artists}}">
+                    <input type="text" name="trackList" value="{{albums.tracklist}}">
+                    <input type="text" name="image_url" value="{{albums.images}}"> --}}
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Add to My wish list</button>
+            </form>
+
+
+
+<img src="{{albums.images.0.uri}}" alt="{{albums.title}}">
+<p>Title: {{albums.title}}</p>
+<p>Year : {{albums.year}}</p>
 <p>Formats:</p>
 <ul>
-{{#each album.formats}}
+{{#each albums.formats}}
  <li>{{this.name}}</li>
 {{/each}}
 </ul>
 <p>Artists:</p>
 <ul>
-{{#each album.artists}}
+{{#each albums.artists}}
  <li>{{this.name}}</li>
 {{/each}}
 </ul>
 <p>Tracklist: </p>
 <ol>
-{{#each album.tracklist}}
+{{#each albums.tracklist}}
  <li>{{this.title}}  /  {{this.duration}}</li> 
 
  {{!-- <p>Extra artists: </p>

@@ -1,0 +1,22 @@
+<h2>My Music Library</h2>
+
+<ul>
+{{#each user.myList}}
+<a href="/album/album-details/{{id}}">
+  <li>
+   <img src={{this.images.0.uri}} alt="{{this.title}}"> 
+    {{this.title}}
+    {{this.year}}
+    {{#each this.artists}}
+    {{this.name}}
+    {{/each}}
+  </li>
+</a>
+            <form action="/profile/my-list/{{_id}}/delete" method="POST">
+                <div style="display: none;">
+                    <input type="text" name="_id" value="{{_id}}">
+                </div>
+                <button type="submit" class="btn btn-secondary">Delete of my list</button>
+            </form>
+{{/each}}
+</ul>

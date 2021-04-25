@@ -1,8 +1,22 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; 
+  max-height: 100vh;
+}
+body{
+  background: rgb(2,0,36);
+  background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(0,101,111,1) 25%, rgba(249,249,249,1) 100%);
+  background-size: contain;
+  background-attachment: fixed;
+}
 a {
   color: #00B7FF; }
-
+footer{
+  background-color: black;
+  position:absolute;
+  bottom: 0px;
+  width: 100vw;
+  height: 40px;
+  color: white;
+}
 /*# sourceMappingURL=style.css.map */
