@@ -46,10 +46,11 @@ router.post('/my-list/:_id', checkForAuth,(req,res,next)=>{
 });
 
 router.post('/my-list/:_id/delete', checkForAuth,(req,res)=>{
-  Album.findByIdAndDelete(req.params._id)
+  User.findByIdAndUpdate(req.user._id, {$pull: {myList: req.params._id}})
   .then((result) => {
       res.redirect('/profile/my-list')
-    }).catch((err) => {
+    })
+    .catch((err) => {
       console.log(err)
     });
 })

@@ -115,6 +115,7 @@ router.get('/create-album', checkForAuth,(req,res)=>{
 
 router.post("/create-album", checkForAuth, (req, res) => {
   console.log(req.body)
+  
   Album.create(req.body)
     .then((result) => {
       User.findById(req.user._id)
