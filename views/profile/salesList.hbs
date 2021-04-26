@@ -1,0 +1,28 @@
+<h2>My sales List</h2>
+
+<ul>
+{{#each user.salesList}}
+<a href="/album/album-details/{{id}}">
+  <li>
+   <img src={{this.images.0.uri}} alt="{{this.title}}"> 
+    {{this.title}}
+    {{this.year}}
+    {{#each this.artists}}
+    {{this.name}}
+    {{/each}}
+  </li>
+</a>
+            <form action="/profile/sales-list/{{_id}}/delete" method="POST">
+                <div style="display: none;">
+                    <input type="text" name="_id" value="{{_id}}">
+                </div>
+                <button type="submit" class="btn btn-secondary">Delete of my sales list</button>
+            </form>
+            <form action="/profile/sales-list/{{_id}}/sold" method="POST">
+                <div style="display: none;">
+                    <input type="text" name="_id" value="{{_id}}">
+                </div>
+                <button type="submit" class="btn btn-secondary">Sold</button>
+            </form>            
+{{/each}}
+</ul>
