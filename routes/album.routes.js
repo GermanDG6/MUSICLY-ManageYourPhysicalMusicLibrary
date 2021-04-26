@@ -110,29 +110,55 @@ router.get("/album-details/:id", (req, res) => {
 });
 
 router.get('/create-album', checkForAuth,(req,res)=>{
-  res.render('profile/createAlbum')
+  const layout = req.user? '/layout/auth' : '/layout/noAuth' 
+  res.render('profile/createAlbum',{layout})
 })
 
 router.post("/create-album", checkForAuth, (req, res) => {
-  console.log(req.body)
+  // Album.create(req.body)
+  // .then((result) => {
+  //   res.redirect('profile/my-list')
+  // }).catch((err) => {
+  //   console.log(err)
+  // });   
   
-  Album.create(req.body)
-    .then((result) => {
-      User.findById(req.user._id)
-      .then((result) => {
-        if (!result.myList.includes(req.body)) {
-          User.findByIdAndUpdate(req.user._id, {$push: { myList: req.body }})
-          .then((result) => {
-            res.redirect("/profile/my-list");
-          });
-        } else {
-          res.redirect("/profile/my-list");
-        }
-      });
-    })
-    .catch((err) => {
-      console.log(err)
-    });
+  const {title, year, image_url, formats, artists, tracklist} = req.body
+
+  let formatsArr = formats.map((elem) =>{
+    return {name: elem}
+  })
+  let artistsArr = artists.map((elem)=>{
+    return {name: elem}
+  })
+  let tracklistArr = tracklist.map((elem1,elem2)=>{
+    return {title: elem1, duration: elem2}
+  })
+  let newAlbum = {title, year, image_url, formats: formatsArr, artists: artistsArr, tracklist: tracklistArr};
+
+ console.log(newAlbum)
 });
+
+
+
+// router.post("/create-album", checkForAuth, (req, res) => {
+//   Album.create(req.body)
+//     .then((result) => {
+//       console.log(req.body);
+//       User.findById(req.user._id).then((result) => {
+//         if (!result.myList.includes(req.body)) {
+//           User.findByIdAndUpdate(req.user._id, {
+//             $push: { myList: req.body },
+//           }).then((result) => {
+//             res.redirect("/profile/my-list");
+//           });
+//         } else {
+//           res.redirect("/profile/my-list");
+//         }
+//       });
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//     });
+// });
 
 module.exports = router;

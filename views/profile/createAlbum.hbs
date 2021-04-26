@@ -7,18 +7,49 @@
 
     <label for="title">Title: </label>
     <input type="text" name="title">
+
     <label for="year">Year: </label>
     <input type="text" name="year">
-    {{!-- <label for="formats">Formats: </label>
-    <input type="text" name="formats">
-    <label for="artists">Artists: </label>
-    <input type="text" name="artists">
-    <label for="tracklist">Track-list: </label>
-    <input type="text" name="tracklist"> --}}
+
     <label for="image_url">Image url: </label>
     <input type="text" name="image_url">
+
+    <div>
+    <button id="addFormatBtn" type="button">Add new Format</button>
+    <div id="formatDiv">
+    <label for="formats">Formats: </label>
+    <input type="text" name="formats" class="format">
+    </div>
+    </div>
+
+    <div>
+      <button id="addFormatBtn" type="button">Add new artist</button>
+    <div id="artistsDiv">
+      <label for="artists">Artists: </label>
+      <input type="text" name="artists">
+    </div>
+    </div>
+
+    <div>
+      <button id="addFormatBtn" type="button">Add new track</button>
+    <div id="tracklistDiv">
+      <label for="tracklist">Track-list: </label>
+      <input type="text" placeholder="title" name="tracklist">
+      {{!-- <input type="text" placeholder="duration" name="tracklist"> --}}
+    </div>
+    </div>
+
   </div>
   <button type="submit" class="btn btn-outline-secondary">Create a album</button>
 </form>
 
 <label for=""></label>
+
+
+<script>
+
+document.getElementById("addFormatBtn").addEventListener("click", ()=>{
+ document.getElementById('formatDiv').innerHTML += '<input type="text" name="formats" class="format">'
+});
+
+</script>
