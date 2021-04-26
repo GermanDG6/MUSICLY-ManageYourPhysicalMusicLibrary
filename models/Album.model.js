@@ -7,7 +7,7 @@ const albumSchema = new Schema({
     formats:[{name: {type: String}}],
     artists: [{name: {type: String}}],
     tracklist: [{title:{type: String},duration:{type: String}}],
-    images: [{uri: {type: String}}]
+    images: [{uri: {type: String, default:'https://cipapurimac.org.pe/wp-content/plugins/gallery-album/assets/img/albom-empoty.jpg'}}]
 },
 {
     versionKey: false

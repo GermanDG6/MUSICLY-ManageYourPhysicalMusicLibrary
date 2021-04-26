@@ -114,51 +114,68 @@ router.get('/create-album', checkForAuth,(req,res)=>{
   res.render('profile/createAlbum',{layout})
 })
 
-router.post("/create-album", checkForAuth, (req, res) => {
-  // Album.create(req.body)
-  // .then((result) => {
-  //   res.redirect('profile/my-list')
-  // }).catch((err) => {
-  //   console.log(err)
-  // });   
+router.post("/create-album", checkForAuth, (req, res) => {  
+  const {title, year, images, formats, artists, tracklist} = req.body
+
+  let imagesArr;
+  if(Array.isArray(images)){
+    imagesArr = images.map((elem) =>{
+      return {uri: elem}
+    })
+  }else{
+    imagesArr = [{uri: images}]
+  }
   
-  const {title, year, image_url, formats, artists, tracklist} = req.body
 
-  let formatsArr = formats.map((elem) =>{
-    return {name: elem}
-  })
-  let artistsArr = artists.map((elem)=>{
-    return {name: elem}
-  })
-  let tracklistArr = tracklist.map((elem1,elem2)=>{
-    return {title: elem1, duration: elem2}
-  })
-  let newAlbum = {title, year, image_url, formats: formatsArr, artists: artistsArr, tracklist: tracklistArr};
+  let formatsArr; 
+  if(Array.isArray(formats)){
+    formatsArr = formats.map((elem) =>{
+      return {name: elem}
+    })
+  }else{
+    formatsArr = [{name: formats}]
+  }
 
- console.log(newAlbum)
+  let artistsArr;
+  if(Array.isArray(artists)){
+    artistsArr = artists.map((elem)=>{
+      return {name: elem}
+    })
+  }else{
+    artistsArr = [{name: artists}]
+  }
+
+  let tracklistArr;
+  if(Array.isArray(tracklist)){
+   tracklistArr = tracklist.map((elem)=>{
+      return {title: elem}
+    })
+  }else{
+    tracklistArr = [{title: tracklist}]
+  }
+
+  let newAlbum = {title, year, images: imagesArr, formats: formatsArr, artists: artistsArr , tracklist: tracklistArr};
+
+   Album.create(newAlbum)
+    .then((album) => {
+      User.findById(req.user._id)
+      .populate('myList')
+      .then((user) => {
+        if (!user.myList.includes(album._id)) {
+          User.findByIdAndUpdate(req.user._id, {
+            $push: { myList: album },
+          }).then(() => {
+            res.redirect("/profile/my-list");
+          });
+        } else {
+          res.redirect("/");
+        }
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
-
-
-// router.post("/create-album", checkForAuth, (req, res) => {
-//   Album.create(req.body)
-//     .then((result) => {
-//       console.log(req.body);
-//       User.findById(req.user._id).then((result) => {
-//         if (!result.myList.includes(req.body)) {
-//           User.findByIdAndUpdate(req.user._id, {
-//             $push: { myList: req.body },
-//           }).then((result) => {
-//             res.redirect("/profile/my-list");
-//           });
-//         } else {
-//           res.redirect("/profile/my-list");
-//         }
-//       });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//     });
-// });
 
 module.exports = router;

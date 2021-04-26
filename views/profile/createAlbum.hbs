@@ -11,8 +11,9 @@
     <label for="year">Year: </label>
     <input type="text" name="year">
 
-    <label for="image_url">Image url: </label>
-    <input type="text" name="image_url">
+    <label for="images">Image url: </label>
+    <input type="text" name="images">
+    
 
     <div>
     <button id="addFormatBtn" type="button">Add new Format</button>
@@ -23,15 +24,15 @@
     </div>
 
     <div>
-      <button id="addFormatBtn" type="button">Add new artist</button>
+      <button id="addArtistBtn" type="button">Add new artist</button>
     <div id="artistsDiv">
       <label for="artists">Artists: </label>
-      <input type="text" name="artists">
+      <input type="text" name="artists" class="artists">
     </div>
     </div>
 
     <div>
-      <button id="addFormatBtn" type="button">Add new track</button>
+      <button id="addTracklistBtn" type="button">Add new track</button>
     <div id="tracklistDiv">
       <label for="tracklist">Track-list: </label>
       <input type="text" placeholder="title" name="tracklist">
@@ -50,6 +51,14 @@
 
 document.getElementById("addFormatBtn").addEventListener("click", ()=>{
  document.getElementById('formatDiv').innerHTML += '<input type="text" name="formats" class="format">'
+});
+
+document.getElementById("addArtistBtn").addEventListener("click", ()=>{
+ document.getElementById('artistsDiv').innerHTML += '<input type="text" name="artists" class="artists">'
+});
+
+document.getElementById("addTracklistBtn").addEventListener("click", ()=>{
+ document.getElementById('tracklistDiv').innerHTML += '<input type="text" placeholder="title" name="tracklist">'
 });
 
 </script>
