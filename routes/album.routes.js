@@ -38,6 +38,15 @@ router.get('/all-albums',(req,res)=>{
   });
 })
 
+router.get('/album-details/',(req,res)=>{
+  const layout = req.user ? "/layout/auth" : "/layout/noAuth";
+  Album.findById({_id})
+  .then((album) => {
+    res.render("album-details", { albums: album, layout: layout });
+  }).catch((err) => {
+    res.render('error')
+  });
+})
 router.get("/album-details/:id", (req, res) => {
   const id = req.params.id;
   const layout = req.user ? "/layout/auth" : "/layout/noAuth";
@@ -51,6 +60,7 @@ router.get("/album-details/:id", (req, res) => {
         tracklist,
         artists,
         images,
+        lowest_price
       } = result.data;
       Album.findOne({ id })
       .then((album) => {
@@ -65,6 +75,7 @@ router.get("/album-details/:id", (req, res) => {
             artists,
             tracklist,
             images,
+            lowest_price
           })
           .then((album2) => {
             res.render("album-details", { albums: album2, layout: layout });
@@ -83,6 +94,7 @@ router.get("/album-details/:id", (req, res) => {
             tracklist,
             artists,
             images,
+            lowest_price
           } = result.data;
           Album.findOne({ id })
           .then((album) => {
@@ -97,6 +109,7 @@ router.get("/album-details/:id", (req, res) => {
                 artists,
                 images,
                 tracklist,
+                lowest_price
               }).then((album2) => {
                 res.render("album-details", { albums: album2, layout: layout });
               });
@@ -104,14 +117,26 @@ router.get("/album-details/:id", (req, res) => {
           });
         })
         .catch((err) => {
-          console.log(err);
+          console.log('ERRORRRRRRRRR',err);
+          res.render('error')
         });
     });
 });
 
+router.get('/own-album-details/:_id', checkForAuth,(req,res)=>{
+  const layout = req.user ? '/layout/auth' : '/layout/noAuth'
+  Album.findById(req.params._id)
+  .then((result) => {
+    res.render('album-details',{albums: result, layout:layout})
+  })
+  .catch((err) => {
+    res.render('error')
+  })
+});
+
 router.get('/create-album', checkForAuth,(req,res)=>{
   const layout = req.user? '/layout/auth' : '/layout/noAuth' 
-  res.render('profile/createAlbum',{layout})
+  res.render('profile/createAlbum',{layout: layout})
 })
 
 router.post("/create-album", checkForAuth, (req, res) => {  
@@ -161,6 +186,7 @@ router.post("/create-album", checkForAuth, (req, res) => {
       User.findById(req.user._id)
       .populate('myList')
       .then((user) => {
+        console.log(album._id)
         if (!user.myList.includes(album._id)) {
           User.findByIdAndUpdate(req.user._id, {
             $push: { myList: album },

@@ -18,14 +18,17 @@
 
 
 <img src="{{albums.images.0.uri}}" alt="{{albums.title}}">
+<p>Price: {{albums.lowest_price}}</p>
 <p>Title: {{albums.title}}</p>
 <p>Year : {{albums.year}}</p>
 <p>Formats:</p>
+{{#if albums.formats}}
 <ul>
 {{#each albums.formats}}
  <li>{{this.name}}</li>
 {{/each}}
 </ul>
+{{/if}}
 <p>Artists:</p>
 <ul>
 {{#each albums.artists}}

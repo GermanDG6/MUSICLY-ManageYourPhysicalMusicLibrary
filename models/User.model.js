@@ -5,7 +5,7 @@ const userSchema = new Schema({
     password: {type: String, required: true},
     myList: [{type: Schema.Types.ObjectId, ref: `Album`}],
     wishList:[{type: Schema.Types.ObjectId, ref: `Album`}],
-    salesList: [{type: Schema.Types.ObjectId, ref: `Album`}]
+    salesList: [{type: Schema.Types.ObjectId, ref: `Album`}],
 },
 {
     versionKey: false,

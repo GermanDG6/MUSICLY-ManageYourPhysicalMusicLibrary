@@ -1,22 +1,36 @@
-<h2>My Wish List</h2>
+<h2 class="text-white">My Wish List</h2>
 
 <ul>
 {{#each user.wishList}}
-<a href="/album/album-details/{{id}}">
-  <li>
-   <img src={{this.images.0.uri}} alt="{{this.title}}"> 
-    {{this.title}}
-    {{this.year}}
+<li class="list-style">
+<div class="card" style="width: 16rem;">
+  <a href="/album/own-album-details/{{_id}}" class="text-black">
+  <img src="{{this.images.0.uri}}" class="card-img-top" alt="{{this.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">{{this.year}}</p>
+    <p>
     {{#each this.artists}}
     {{this.name}}
     {{/each}}
-  </li>
-</a>
-            <form action="/profile/wish-list/{{_id}}/delete" method="POST">
-                <div style="display: none;">
-                    <input type="text" name="_id" value="{{_id}}">
-                </div>
-                <button type="submit" class="btn btn-secondary">Delete of my wish list</button>
-            </form>
+    </p></a>
+    <div  class="buttons-style">
+    <form action="/profile/wish-list/{{_id}}/delete" method="POST">
+      <div style="display: none;">
+        <input type="text" name="_id" value="{{_id}}">
+      </div>
+      <button type="submit" class="btn btn-secondary button">Delete of my wish list</button>
+    </form>
+    <form action="/profile/my-list/{{this._id}}" method="POST">
+      <div style="display: none;">
+        <input type="text" name="_id" value="{{this._id}}">
+      </div>
+      <button type="submit" class="btn btn-secondary button">Add to my list</button>
+    </form>
+    </div>
+  </div>
+</div>
+</li>           
 {{/each}}
 </ul>
+ 

@@ -20,7 +20,7 @@ router.get('/my-list', checkForAuth ,(req, res) => {
   const layout = req.user ? '/layout/auth' : '/layout/noAuth'
   User.findById(req.user._id)
   .populate('myList')
-  //.populate('artists')
+  .populate('createdList')
   .then((result) => {
       res.render('profile/myList', {user: result , layout: layout})
   }).catch((err) => {
@@ -52,7 +52,7 @@ router.post('/my-list/:_id', checkForAuth,(req,res,next)=>{
   });
 });
 router.post('/my-list/:_id/delete', checkForAuth,(req,res)=>{
-  User.findByIdAndUpdate(req.user._id, {$pull: {myList: req.params._id}})
+  User.findByIdAndUpdate(req.user._id, {$pull: {myList: req.params._id, createdList: req.params._id}})
   .then((result) => {
       res.redirect('/profile/my-list')
     })
@@ -138,4 +138,6 @@ router.post('/sales-list/:_id/sold', checkForAuth, (req,res)=>{
     console.log(err)
   });
 })
+
+
 module.exports = router;

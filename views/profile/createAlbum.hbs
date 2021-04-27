@@ -5,60 +5,72 @@
 <form action="/album/create-album" method="POST">
   <div >
 
+  <div class="form-floating">
     <label for="title">Title: </label>
-    <input type="text" name="title">
+    <input type="text" name="title" class="form-control" placeholder="Title">
+  </div>
 
+  <div class="form-floating">
     <label for="year">Year: </label>
-    <input type="text" name="year">
+    <input type="text" name="year" class="form-control" placeholder="Year">
+  </div>    
 
-    <label for="images">Image url: </label>
-    <input type="text" name="images">
+  <div class="form-floating">
+    <label for="images">Images: </label>
+    <input type="text" name="images" class="form-control" placeholder="Images">
+  </div>    
     
 
-    <div>
-    <button id="addFormatBtn" type="button">Add new Format</button>
+  <div>
+    <button id="addFormatBtn" type="button"  class="btn btn-outline-ligth text-white">Add new Format</button>
     <div id="formatDiv">
-    <label for="formats">Formats: </label>
-    <input type="text" name="formats" class="format">
+      <div class="form-floating">
+        <label for="formats">Formats: </label>
+        <input type="text" name="formats" class="form-control format" placeholder="Formats">
+      </div>    
     </div>
-    </div>
+  </div>
 
-    <div>
-      <button id="addArtistBtn" type="button">Add new artist</button>
+  <div>
+    <button id="addArtistBtn" type="button"  class="btn btn-outline-ligth text-white">Add new artist</button>
     <div id="artistsDiv">
-      <label for="artists">Artists: </label>
-      <input type="text" name="artists" class="artists">
+      <div class="form-floating">
+        <label for="artists">Artists: </label>
+        <input type="text" name="artists" class="form-control artists" placeholder="Artists">
+      </div>      
     </div>
-    </div>
+  </div>
 
-    <div>
-      <button id="addTracklistBtn" type="button">Add new track</button>
+  <div>
+    <button id="addTracklistBtn" type="button"  class="btn btn-outline-ligth text-white">Add new track</button>
     <div id="tracklistDiv">
-      <label for="tracklist">Track-list: </label>
-      <input type="text" placeholder="title" name="tracklist">
-      {{!-- <input type="text" placeholder="duration" name="tracklist"> --}}
+      <div class="form-floating">
+        <label for="tracklist">Tracklist: </label>
+        <input type="text" name="tracklist" class="form-control tracklist" placeholder="Title">
+        {{!-- <input type="text" name="tracklist" class="form-control tracklist" placeholder="Title">     --}}
+      </div>      
     </div>
-    </div>
+  </div>
 
   </div>
-  <button type="submit" class="btn btn-outline-secondary">Create a album</button>
+  <button type="submit" class="btn btn-ligth text-white">Create a album</button>
 </form>
 
-<label for=""></label>
+
 
 
 <script>
 
 document.getElementById("addFormatBtn").addEventListener("click", ()=>{
- document.getElementById('formatDiv').innerHTML += '<input type="text" name="formats" class="format">'
+ document.getElementById('formatDiv').innerHTML += '<input type="text" name="formats" class="form-control format" placeholder="Formats">'
 });
 
 document.getElementById("addArtistBtn").addEventListener("click", ()=>{
- document.getElementById('artistsDiv').innerHTML += '<input type="text" name="artists" class="artists">'
+ document.getElementById('artistsDiv').innerHTML += ' <input type="text" name="artists" class="form-control artists" placeholder="Artists">'
 });
 
 document.getElementById("addTracklistBtn").addEventListener("click", ()=>{
- document.getElementById('tracklistDiv').innerHTML += '<input type="text" placeholder="title" name="tracklist">'
+ document.getElementById('tracklistDiv').innerHTML += '<input type="text" name="tracklist" class="form-control tracklist" placeholder="Title">'
 });
 
 </script>
