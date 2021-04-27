@@ -2,55 +2,55 @@
 
 
 
-<form action="/album/create-album" method="POST">
-  <div >
+<form action="/album/create-album" method="POST" class="create-album">
+  <div class="create-album-div">
 
-  <div class="form-floating">
-    <label for="title">Title: </label>
-    <input type="text" name="title" class="form-control" placeholder="Title">
-  </div>
+    <div class="form-floating">
+      <label for="title">Title: </label>
+      <input type="text" name="title" class="form-control" placeholder="Title">
+    </div>
 
-  <div class="form-floating">
-    <label for="year">Year: </label>
-    <input type="text" name="year" class="form-control" placeholder="Year">
-  </div>    
+    <div class="form-floating">
+      <label for="year">Year: </label>
+      <input type="text" name="year" class="form-control" placeholder="Year">
+    </div>    
 
-  <div class="form-floating">
-    <label for="images">Images: </label>
-    <input type="text" name="images" class="form-control" placeholder="Images">
-  </div>    
+    <div class="form-floating">
+      <label for="images">Images: </label>
+      <input type="text" name="images" class="form-control" placeholder="Images">
+    </div>    
     
 
-  <div>
-    <button id="addFormatBtn" type="button"  class="btn btn-outline-ligth text-white">Add new Format</button>
-    <div id="formatDiv">
-      <div class="form-floating">
-        <label for="formats">Formats: </label>
-        <input type="text" name="formats" class="form-control format" placeholder="Formats">
-      </div>    
+    <div>
+      <button id="addFormatBtn" type="button"  class="btn btn-outline-ligth text-white">Add new Format</button>
+      <div id="formatDiv">
+        <div class="form-floating">
+          <label for="formats">Formats: </label>
+          <input type="text" name="formats" class="form-control format" placeholder="Formats">
+        </div>    
+      </div>
     </div>
-  </div>
 
-  <div>
-    <button id="addArtistBtn" type="button"  class="btn btn-outline-ligth text-white">Add new artist</button>
-    <div id="artistsDiv">
-      <div class="form-floating">
-        <label for="artists">Artists: </label>
-        <input type="text" name="artists" class="form-control artists" placeholder="Artists">
-      </div>      
+    <div>
+      <button id="addArtistBtn" type="button"  class="btn btn-outline-ligth text-white">Add new artist</button>
+      <div id="artistsDiv">
+        <div class="form-floating">
+          <label for="artists">Artists: </label>
+          <input type="text" name="artists" class="form-control artists" placeholder="Artists">
+        </div>      
+      </div>
     </div>
-  </div>
 
-  <div>
-    <button id="addTracklistBtn" type="button"  class="btn btn-outline-ligth text-white">Add new track</button>
-    <div id="tracklistDiv">
-      <div class="form-floating">
-        <label for="tracklist">Tracklist: </label>
-        <input type="text" name="tracklist" class="form-control tracklist" placeholder="Title">
-        {{!-- <input type="text" name="tracklist" class="form-control tracklist" placeholder="Title">     --}}
-      </div>      
+    <div>
+      <button id="addTracklistBtn" type="button"  class="btn btn-outline-ligth text-white">Add new track</button>
+      <div id="tracklistDiv">
+        <div class="form-floating">
+          <label for="tracklist">Tracklist: </label>
+          <input type="text" name="tracklist" class="form-control tracklist" placeholder="Title">
+          {{!-- <input type="text" name="tracklist" class="form-control tracklist" placeholder="Title">     --}}
+        </div>      
+      </div>
     </div>
-  </div>
 
   </div>
   <button type="submit" class="btn btn-ligth text-white">Create a album</button>

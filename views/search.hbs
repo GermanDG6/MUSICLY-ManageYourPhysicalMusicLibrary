@@ -14,14 +14,34 @@
 {{/if}}
 </div>
 <div class="search-result">
-{{#each album}}
 <ul>
-<a href="/album/album-details/{{id}}">
-   <li>
-      {{this.title}}
-      <img src="{{this.cover_image}}" alt="{{this.title}}">
-    </li>
-  </a> 
-</ul>
-{{/each}}
+{{#each album}}
+<li class="list-style">
+<div class="card" style="width: 16rem;">
+  <a href="/album/album-details/{{id}}" class="text-black">
+  <img src="{{this.cover_image}}" class="card-img-top" alt="{{this.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">{{this.year}}</p>
+    </a>
+  </div>
 </div>
+</li>           
+{{/each}}
+</ul>
+</div>
+
+{{#each album}}
+<li class="list-style">
+<div class="card" style="width: 16rem;">
+  <a href="/album/album-details/{{id}}" class="text-black">
+  <img src="{{this.cover_image}}" class="card-img-top" alt="{{this.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{this.title}}</h5>
+    <p class="card-text">{{this.year}}</p>
+    </a>
+  </div>
+</div>
+</li>           
+{{/each}}
+</ul>
