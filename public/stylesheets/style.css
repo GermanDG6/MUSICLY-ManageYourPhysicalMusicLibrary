@@ -15,9 +15,10 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-html, body {
+html,
+body {
   width: 100%;
-  height:100%;
+  height: 105%;
 }
 .errorMessage{
   text-align: center;
@@ -140,17 +141,22 @@ justify-content: center;
 }
 
 footer {
-  background: linear-gradient(#0c229c2d, #000000); 
+  background: linear-gradient(#0920a000, #00000096); 
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 40px;
+  height: 12vh;
   color: white;
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
-  justify-content: space-around ;
+  justify-content: space-between ;
 }
 .footer-logo{
-  width: 10vw;
+  margin: 15px;
+  width: 3rem;
+}
+.logo-discogs{
+  margin: 12px;
+  width:4.2em;
 }

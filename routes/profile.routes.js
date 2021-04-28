@@ -71,15 +71,17 @@ router.get('/wish-list', checkForAuth ,(req, res) => {
   });
 })
 router.post('/wish-list/:_id', checkForAuth, (req,res,next)=>{
+  const layout = req.user ? '/layout/auth' : '/layout/noAuth'
   User.findById(req.user._id)
+  .populate('wishList')
   .then((result) => {
     if(!result.wishList.includes(req.params._id) && !result.myList.includes(req.params._id)){
       User.findByIdAndUpdate(req.user._id , {$push: {wishList: req.params._id}})
-      .then((result) => {
+      .then(() => {
         res.redirect('/profile/wish-list')
       })
     }else{
-      res.redirect('/profile/wish-list')
+      res.render('profile/wishList', {user: result , layout: layout, errorMessage: "This album already exists"})
     }
   })
   .catch((err) => {
