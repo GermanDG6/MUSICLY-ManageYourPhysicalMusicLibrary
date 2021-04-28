@@ -25,7 +25,7 @@ router.get('/all-albums',(req,res)=>{
       if (req.query.artist === "" ) {
         const layout = req.user ? '/layout/auth' : '/layout/noAuth'
         res.render("search", {
-          errorMessage: "Todos los campos deben estar rellenos",
+          errorMessage: "All fields must be completed",
           layout: layout
         })
         return
@@ -117,7 +117,6 @@ router.get("/album-details/:id", (req, res) => {
           });
         })
         .catch((err) => {
-          console.log('ERRORRRRRRRRR',err);
           res.render('error')
         });
     });

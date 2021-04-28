@@ -1,6 +1,9 @@
 <h2 class="text-white">My Wish List</h2>
 
-<ul>
+{{#if errorMessage}}
+<p class="errorMessage">{{this.errorMessage}}</p>
+{{/if}}
+<ul class="scroll">
 {{#each user.wishList}}
 <li class="list-style">
 <div class="card" style="width: 16rem;">
@@ -33,4 +36,5 @@
 </li>           
 {{/each}}
 </ul>
+ 
  

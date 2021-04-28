@@ -21,7 +21,7 @@ const User = require('./models/User.model')
 
 //----Configuracion DB
 mongoose
-  .connect('mongodb://localhost/backend-proyect2-rmt-ft-march21-germandg', {
+  .connect(`${process.env.MONGODB_URL}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false

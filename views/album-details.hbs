@@ -1,44 +1,27 @@
-<h2>Album details</h2>
-
-
-            <form action="/profile/my-list/{{albums._id}}" method="POST">
-                <div style="display: none;">
-                    <input type="text" name="_id" value="{{albums._id}}">
-                </div>
-                <button type="submit" class="btn btn-outline-secondary">Add to my list</button>
-            </form>
-            <form action="/profile/wish-list/{{albums._id}}" method="POST">
-                <div style="display: none;">
-                    <input type="text" name="_id" value="{{albums._id}}">
-                </div>
-                <button type="submit" class="btn btn-outline-secondary">Add to wish list</button>
-            </form>
-
-
-
-
-<img src="{{albums.images.0.uri}}" alt="{{albums.title}}">
-<p>Price: {{albums.lowest_price}}</p>
-<p>Title: {{albums.title}}</p>
-<p>Year : {{albums.year}}</p>
-<p>Formats:</p>
+<h2 class="text-white">Album details</h2>
+<div class="album-details scroll">
+<div class="card" style="width: 20rem; height:fit-content">
+  <img src="{{albums.images.0.uri}}" class="card-img-top" alt="{{albums.title}}">
+  <div class="card-body">
+    <h5 class="card-title">{{albums.title}}</h5>
+    <p class="card-text">{{albums.year}}</p>
+    {{#if albums.artists}}
+    <ul>{{#each albums.artists}}
+    <li class="list-style">{{albums.name}}</li>
+    {{/each}}</ul>
+    {{/if}}
 {{#if albums.formats}}
+    <p>Formats:</p>
 <ul>
 {{#each albums.formats}}
  <li>{{this.name}}</li>
 {{/each}}
 </ul>
 {{/if}}
-<p>Artists:</p>
-<ul>
-{{#each albums.artists}}
- <li>{{this.name}}</li>
-{{/each}}
-</ul>
 <p>Tracklist: </p>
 <ol>
 {{#each albums.tracklist}}
- <li>{{this.title}}  /  {{this.duration}}</li> 
+ <li>{{this.title}}  {{#if this.duration}}/  {{this.duration}} {{/if}} </li> 
 
  {{!-- <p>Extra artists: </p>
  <ul>
@@ -49,6 +32,20 @@
 {{/each}}
 </ol>
 
-
-
- 
+    <div  class="buttons-style">
+    <form action="/profile/my-list/{{albums._id}}" method="POST">
+      <div style="display: none;">
+        <input type="text" name="_id" value="{{albums._id}}">
+      </div>
+      <button type="submit" class="btn btn-secondary button">Add to my list</button>
+    </form>
+    <form action="/profile/wish-list/{{albums._id}}" method="POST">
+      <div style="display: none;">
+        <input type="text" name="_id" value="{{albums._id}}">
+      </div>
+      <button type="submit" class="btn btn-secondary button">Add to my wish list</button>
+    </form>
+    </div>
+  </div>
+</div>
+</div>

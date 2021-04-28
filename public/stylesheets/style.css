@@ -1,17 +1,29 @@
+@font-face {
+  font-family: akira;
+  src: url(/fonts/Akira\ Expanded\ Demo.otf);
+}
+.akira{
+  font-family: 'akira';
+}
 body {
- 
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 18px ;
+  font-family: 'Roboto', sans-serif;
   background-image: url('/images/backgorund-vinyl.jpg');
-  background: linear-gradient(-45deg, #000000, #0c229c, #3baad6, #73ccff); 
+  background: linear-gradient(-45deg, #000000, #0c229c, #3baad6, #3ea6e2); 
   background-size: 400% 200%;
-  animation: gradient 25s ease infinite;
+  animation: gradient 20s ease infinite;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-
 html, body {
   width: 100%;
   height:100%;
+}
+.errorMessage{
+  text-align: center;
+  font: 18px 'akira' ;
+  color: crimson;
+  margin: 5px;
 }
   
 @keyframes gradient {
@@ -25,17 +37,64 @@ html, body {
       background-position: 0% 50%;
     }
 }
-
+h2{
+  text-align: center;
+  font-family: 'akira';
+}
+h6{
+  width: 10vw;
+  font-family: 'akira';
+  margin-top: 2vh;
+}
 ul{
   padding: 0px;
 }
+.scroll{
+  overflow-y: scroll;
+  height: 80vh;
+}
+.scroll::-webkit-scrollbar {
+  display: none;
+}
 .menu{
-  background-color: rgba(255, 255, 255, 0);
+  background-color: #73ccff;
 }
 .menu-logo{
   width: 25px;
+  margin: 10px;
 }
-
+.menu-button{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+.searcher{
+  margin: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.search{
+  width: 80vw;
+}
+.inputs{
+  width: 60vw;
+  padding: 5px;
+  margin:-5px;
+}
+.inputs-album{
+  width: 60vw;
+  padding: 15px;
+  margin:-5px;
+}
+.inputs-auth{
+  margin: 0px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
 .text-white{
   text-decoration: none;
   color: white;
@@ -61,6 +120,10 @@ ul{
 .button{
   margin:5px;
 }
+.album-details{
+display: flex;
+justify-content: center;
+}
 .create-album{
   margin: 0px;
   width: 100vw;
@@ -75,14 +138,19 @@ ul{
   flex-direction: column;
   align-items: stretch;
 }
-.dropdown-menu .menu .show{
-  margin-bottom: 15px;
-}
+
 footer {
-  background-color: rgb(0, 0, 0);
+  background: linear-gradient(#0c229c2d, #000000); 
   position: fixed;
   bottom: 0;
   width: 100%;
   height: 40px;
   color: white;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-around ;
+}
+.footer-logo{
+  width: 10vw;
 }

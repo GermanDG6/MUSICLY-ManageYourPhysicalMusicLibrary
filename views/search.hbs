@@ -1,19 +1,18 @@
 
 
 
-<div class="searcher">
-<form action="/album/all-albums" method="get">
-  <div class="form-floating">
-    <label for="artist">Search by artist: </label>
-    <input type="text" name="artist" class="form-control" placeholder="Search by artist">
-  </div>
- <button type="submit" class="btn btn-outline-primary text-white">Search</button>
-</form>
+<div >
+ <div class="form-floating searcher">
+  <form action="/album/all-albums" method="get">
+    <input type="text" name="artist" class="form-control search" placeholder="Search by artist">
+    <button type="submit" class="btn btn-outline-ligth button text-white">Search</button>
+  </form>
+ </div>
 {{#if errorMessage}}
 <p>{{this.errorMessage}}</p>
 {{/if}}
 </div>
-<div class="search-result">
+<div class="search-result scroll">
 <ul>
 {{#each album}}
 <li class="list-style">

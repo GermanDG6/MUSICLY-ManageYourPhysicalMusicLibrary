@@ -1,15 +1,15 @@
-<h2 class="text-white">Sign up page</h2>
 
-<form action="/signup" method="post" >
 
-  <div class="form-floating">
+<form action="/signup" method="post" class="inputs-auth">
+
+  <div class="form-floating inputs">
     <label for="username">Username: </label>
-    <input type="text" name="username" class="form-control" placeholder="Username">
+    <input type="text" name="username" class="form-control button" placeholder="Username">
   </div>  
 
-  <div class="form-floating">
+  <div class="form-floating inputs">
     <label for="password">Password: </label>
-    <input type="password" name="password" class="form-control" placeholder="Password">
+    <input type="password" name="password" class="form-control button" placeholder="Password">
   </div>  
 
 <button type="submit" class="btn btn-outline-ligth text-white"> New User </button>
@@ -17,5 +17,5 @@
 </form>
 
 {{#if errorMessage}}
-<p>{{this.errorMessage}}</p>
+<p class="errorMessage">{{this.errorMessage}}</p>
 {{/if}}

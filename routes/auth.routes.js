@@ -14,7 +14,14 @@ router.post("/signup", (req, res) => {
   if (username === "" || password === "") {
     const layout = req.user ? '/layout/auth' : '/layout/noAuth'
     res.render("auth/signup", {
-      errorMessage: "Todos los campos deben estar rellenos",
+      errorMessage: "All fields must be completed",
+      layout: layout
+    })
+    return
+  }else if(password.length<6){
+    const layout = req.user ? '/layout/auth' : '/layout/noAuth'
+    res.render("auth/signup", {
+      errorMessage: "The password must be at least 6 digits long",
       layout: layout
     })
     return
@@ -24,7 +31,7 @@ router.post("/signup", (req, res) => {
       if (user) {
         const layout = req.user ? '/layout/auth' : '/layout/noAuth'
         res.render("auth/signup", { 
-          errorMessage: "Este usuario ya existe",
+          errorMessage: "This user already exists",
           layout: layout  
         });
       } else {
