@@ -2,7 +2,7 @@
   "name": "backend-proyect2-rmt-ft-march21-germandg",
   "version": "0.0.0",
   "scripts": {
-    "start": "node app.js",
+    "start": "node hola.js",
     "dev": "nodemon app.js",
     "dev-windows": "nodemon app.js"
   },
