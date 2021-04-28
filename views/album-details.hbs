@@ -22,16 +22,16 @@
 <ol>
 {{#each albums.tracklist}}
  <li>{{this.title}}  {{#if this.duration}}/  {{this.duration}} {{/if}} </li> 
-
- {{!-- <p>Extra artists: </p>
- <ul>
- {{#each this.extraartists}}
- <li>{{this.name}}</li> 
- {{/each}}  --}}
-</ul>
 {{/each}}
 </ol>
-
+{{#if albums.videos}}
+<p>Videos:</p>
+<ul>
+  {{#each albums.videos}}
+ <li>{{this.uri}}</li> 
+  {{/each}}
+</ul>
+{{/if}}
     <div  class="buttons-style">
     <form action="/profile/my-list/{{albums._id}}" method="POST">
       <div style="display: none;">

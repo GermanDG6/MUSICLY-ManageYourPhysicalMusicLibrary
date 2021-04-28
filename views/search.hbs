@@ -1,6 +1,4 @@
 
-
-
 <div >
  <div class="form-floating searcher">
   <form action="/album/all-albums" method="get">
@@ -22,7 +20,7 @@
   <div class="card-body">
     <h5 class="card-title">{{this.title}}</h5>
     <p class="card-text">{{this.year}}</p>
-    </a>
+  </a>
   </div>
 </div>
 </li>           
@@ -30,17 +28,3 @@
 </ul>
 </div>
 
-{{#each album}}
-<li class="list-style">
-<div class="card" style="width: 16rem;">
-  <a href="/album/album-details/{{id}}" class="text-black">
-  <img src="{{this.cover_image}}" class="card-img-top" alt="{{this.title}}">
-  <div class="card-body">
-    <h5 class="card-title">{{this.title}}</h5>
-    <p class="card-text">{{this.year}}</p>
-    </a>
-  </div>
-</div>
-</li>           
-{{/each}}
-</ul>
