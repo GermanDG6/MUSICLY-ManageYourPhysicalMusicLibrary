@@ -54,7 +54,7 @@ ul{
 }
 .scroll{
   overflow-y: scroll;
-  height: 74vh;
+  height: 70vh;
 }
 .scroll::-webkit-scrollbar {
   display: none;
