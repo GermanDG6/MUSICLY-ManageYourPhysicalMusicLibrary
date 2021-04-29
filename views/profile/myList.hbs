@@ -1,5 +1,8 @@
 <h2 class="text-white">My Music Library</h2>
 
+{{#if errorMessage}}
+<p class="errorMessage">{{this.errorMessage}}</p>
+{{/if}}
 <ul class="scroll">
 {{#each user.myList}}
 <li class="list-style">
