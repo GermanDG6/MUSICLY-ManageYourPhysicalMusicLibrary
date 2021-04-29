@@ -1,5 +1,4 @@
 
-
 <form action="/signup" method="post" class="inputs-auth">
 
   <div class="form-floating inputs">
@@ -19,3 +18,36 @@
 {{#if errorMessage}}
 <p class="errorMessage">{{this.errorMessage}}</p>
 {{/if}}
+
+<div class="akira text-white instructions">
+<img class="instructions-logo" src="/images/logo-directory1.jpeg" alt="Logo">
+<div>
+  <h3 >MUSICLY</h3>
+</div>
+<div class="instructions-text">
+<button type="button" class="btn btn-outline-secondary text-white modal-button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+What is MUSICLY?
+</button>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-black" id="exampleModalLabel">What is MUSICLY?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-black">
+     <p>MUSICLY is an app that organises your music collection.
+You will have an inventory of the albums you want, the albums you have and the albums you want to sell second hand. You will be able to use the search engine to find the albums with the information and in case you can't find it, you can create it and upload it to your inventory. <br> Keep your music library organised. </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+

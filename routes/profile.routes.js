@@ -73,15 +73,20 @@ router.get('/wish-list', checkForAuth ,(req, res) => {
 router.post('/wish-list/:_id', checkForAuth, (req,res,next)=>{
   const layout = req.user ? '/layout/auth' : '/layout/noAuth'
   User.findById(req.user._id)
-  .populate('wishList')
   .then((result) => {
+    console.log('RESULT:',result.wishList)
     if(!result.wishList.includes(req.params._id) && !result.myList.includes(req.params._id)){
+      console.log('REQ.PARAMS._ID:', req.params._id)
       User.findByIdAndUpdate(req.user._id , {$push: {wishList: req.params._id}})
       .then(() => {
         res.redirect('/profile/wish-list')
       })
     }else{
-      res.render('profile/wishList', {user: result , layout: layout, errorMessage: "This album already exists"})
+      User.findById(req.user._id)
+      .populate('wishList')
+      .then((result) => {
+        res.render('profile/wishList', {user: result , layout: layout, errorMessage: "This album already exists"})
+      })
     }
   })
   .catch((err) => {

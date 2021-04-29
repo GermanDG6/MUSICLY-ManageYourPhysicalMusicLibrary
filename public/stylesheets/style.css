@@ -19,7 +19,7 @@ body {
 html,
 body {
   width: 100%;
-  height: 105%;
+  height: 100%;
 }
 .errorMessage{
   text-align: center;
@@ -40,6 +40,7 @@ body {
     }
 }
 h2{
+  font-size: 15px;
   text-align: center;
   font-family: 'akira';
 }
@@ -53,13 +54,21 @@ ul{
 }
 .scroll{
   overflow-y: scroll;
-  height: 80vh;
+  height: 74;
 }
 .scroll::-webkit-scrollbar {
   display: none;
 }
+.scroll-search{
+  overflow-y: scroll;
+  height: 64vh;
+}
+.scroll-search::-webkit-scrollbar {
+  display: none;
+}
 .menu{
-  background-color: #73ccff;
+  font-family: 'akira';
+  background-color: #73ccffea;
 }
 .menu-logo{
   width: 25px;
@@ -154,10 +163,51 @@ footer {
   justify-content: space-between ;
 }
 .footer-logo{
-  margin: 15px;
+  margin-top: 11px;
+  margin-left: 15px;
   width: 3rem;
 }
 .logo-discogs{
-  margin: 12px;
+  margin-top: 21px;
+  margin-right: 12px;
   width:4.2em;
+}
+.logo-linkedIn{
+  margin-left: 20px;
+  width: 3rem;
+}
+.instructions{
+  margin-top:38px;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instructions-logo{
+  width: 10vw;
+}
+.instructions-text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.instructions-text > h6{
+  width: auto;
+}
+.instructions-text > p{
+  width: 49vw;
+  font-size: 9.79px;
+  text-align: justify;
+}
+.modal-button{
+  font-size: 9px;
+  width: 85px;
+  height: 63px;
+  text-align: center;
+}
+.login-flex{
+  margin: 20vh 0vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
 }
