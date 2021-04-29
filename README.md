@@ -2,6 +2,8 @@
 
   Este ha sido mi primer proyecto como desarollador web Full-Stack. Ha sido creado mientras cursaba mi 6ª semana en el bootcamp Ironhack en remoto, en el 2º módulo de back-end, y fue desarrollada en 6 días. Aún esta sujeto a mejoras.
   
+![screenshot](https://ibb.co/GJqRxN0)
+
 
 ## Tecnologías ⌨️
 - Node.js
