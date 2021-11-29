@@ -1,8 +1,8 @@
 # MUSICLY
 
   Este ha sido mi primer proyecto como desarollador web Full-Stack. Ha sido creado mientras cursaba mi 6ª semana en el bootcamp Ironhack en remoto, en el 2º módulo de back-end, y fue desarrollada en 6 días. Aún esta sujeto a mejoras.
-  
-  https://youtu.be/Y5ef0xbsWGM
+
+https://user-images.githubusercontent.com/78930337/143887546-93d21972-61ab-40d0-9a01-37b252b9b3db.mp4
   
 ![screenshot](https://i.ibb.co/pPSd05x/BACKGROUNDmusicly-MOVIL.png)
 
